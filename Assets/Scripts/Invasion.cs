@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine;
-
-using UnityEngine;
-
-using UnityEngine;
-
 public class Invasion : MonoBehaviour
 {
-    public Invader[] prefabs;
+    public Virus[] prefabs;
     public int rows = 3;
     public int columns = 9;
+    public int totalKO { get; private set; }
+    public float percentKO => (float)this.totalKO / ((float)this.rows * this.columns);
     
     private float speed = 1.0f; // Velocidad inicial reducida para un inicio más balanceado
     private float maxSpeed = 8.0f; // Velocidad máxima que puede alcanzar
@@ -34,10 +30,11 @@ public class Invasion : MonoBehaviour
 
             for (int col = 0; col < this.columns; col++)
             {
-                Invader invader = Instantiate(this.prefabs[row % this.prefabs.Length], this.transform);
+                Virus virus = Instantiate(this.prefabs[row % this.prefabs.Length], this.transform);
+                virus.death += VirusDeath; // Corregido: ahora usa una instancia
                 Vector3 position = rowPosition;
                 position.x += col * 1.4f;
-                invader.transform.localPosition = position;
+                virus.transform.localPosition = position;
             }
         }
     }
@@ -49,19 +46,19 @@ public class Invasion : MonoBehaviour
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        foreach (Transform invader in this.transform)
+        foreach (Transform virus in this.transform)
         {
-            if (!invader.gameObject.activeInHierarchy)
+            if (!virus.gameObject.activeInHierarchy)
             {
                 continue;
             }
 
-            if (direction == Vector3.right && invader.position.x >= (rightEdge.x - 0.5f))
+            if (direction == Vector3.right && virus.position.x >= (rightEdge.x - 0.5f))
             {
                 RowDown();
                 break;
             }
-            else if (direction == Vector3.left && invader.position.x <= (leftEdge.x + 0.5f))
+            else if (direction == Vector3.left && virus.position.x <= (leftEdge.x + 0.5f))
             {
                 RowDown();
                 break;
@@ -81,7 +78,14 @@ public class Invasion : MonoBehaviour
         // Aumentar la velocidad progresivamente hasta un máximo
         speed = Mathf.Min(speed * speedIncreaseFactor, maxSpeed);
     }
+
+    private void VirusDeath()
+    {
+        this.totalKO++;
+    }
 }
+
+
 
 
 

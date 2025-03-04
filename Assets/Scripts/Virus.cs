@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invader : MonoBehaviour
+public class Virus : MonoBehaviour
 {
     public Sprite[] animationSprites;
     public float animationTime = 1.0f;
 
-    private SpriteRenderer _spriteRenderer;
-    private int _animationFrame;
+    private SpriteRenderer spriteRenderer;
+    private int animationFrame;
+    public System.Action death;
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -22,14 +23,21 @@ public class Invader : MonoBehaviour
 
     private void AnimateSprite()
     {
-        _animationFrame++;
+        animationFrame++;
 
-        if (_animationFrame >= this.animationSprites.Length)
+        if (animationFrame >= this.animationSprites.Length)
         {
-            _animationFrame = 0;
+            animationFrame = 0;
         }
 
-        _spriteRenderer.sprite = this.animationSprites[_animationFrame];
+        spriteRenderer.sprite = this.animationSprites[animationFrame];
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.layer== LayerMask.NameToLayer("Buller")){
+            this.death.Invoke();
+            this.gameObject.SetActive(false);
+        }
     }
 }
 
