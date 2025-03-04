@@ -9,18 +9,21 @@ public class Invasion : MonoBehaviour
     public int columns = 9;
     public int totalKO { get; private set; }
     public float percentKO => (float)this.totalKO / ((float)this.rows * this.columns);
-
+    public int StillAlive => (int)(this.rows * this.columns)-this.totalKO;  
     private float baseSpeed = 1.0f;
     private float speed;
     private float maxSpeed = 15.0f; // Se aumentó el máximo para mayor desafío
     private int waveNumber = 1;
     public int maxWaves = 5; // Número máximo de oleadas
-
-    private float dropDistance = 1.0f;
+     private float speedIncreaseFactor = 1.1f; // Factor de aumento de velocidad
+    private float dropDistance = 1.0f;     
     private float minDropDistance = 0.3f;
-
     private Vector3 direction = Vector2.right;
     private Vector3 initialPosition; // Guardamos la posición inicial
+    public float FrequencyAttack = 0.2f;
+    public Bullet bullet;
+
+    
 
     private void Start()
     {
@@ -123,4 +126,24 @@ public class Invasion : MonoBehaviour
             StartNewWave();
         }
     }
+
+    private void EnemyAttack()
+    {
+        Debug.Log("Intentando disparar...");
+        foreach (Transform virus in this.transform)
+        {
+            if (!virus.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
+            if (StillAlive > 0 && Random.value < (1.0f / (float)StillAlive))
+            {
+              Instantiate(this.bullet, virus.position, Quaternion.identity);
+              break;
+            }
+            
+        }
+    }
+    
 }
