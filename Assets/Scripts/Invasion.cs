@@ -23,17 +23,17 @@ public class Invasion : MonoBehaviour
     {
         for (int row = 0; row < this.rows; row++)
         {
-            float width = 1.4f * (this.columns - 1);
-            float height = 1.4f * (this.rows - 1);
+            float width = 5f * (this.columns - 1);
+            float height = 5f * (this.rows - 1);
             Vector2 centering = new Vector2(-width / 2, -height / 2);
-            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 1.4f), 0.0f);
+            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 5f), 0.0f);
 
             for (int col = 0; col < this.columns; col++)
             {
                 Virus virus = Instantiate(this.prefabs[row % this.prefabs.Length], this.transform);
                 virus.death += VirusDeath; // Corregido: ahora usa una instancia
                 Vector3 position = rowPosition;
-                position.x += col * 1.4f;
+                position.x += col * 5f;
                 virus.transform.localPosition = position;
             }
         }
@@ -53,12 +53,12 @@ public class Invasion : MonoBehaviour
                 continue;
             }
 
-            if (direction == Vector3.right && virus.position.x >= (rightEdge.x - 0.5f))
+            if (direction == Vector3.right && virus.position.x >= (rightEdge.x - 1.5f))
             {
                 RowDown();
                 break;
             }
-            else if (direction == Vector3.left && virus.position.x <= (leftEdge.x + 0.5f))
+            else if (direction == Vector3.left && virus.position.x <= (leftEdge.x + 1.5f))
             {
                 RowDown();
                 break;
@@ -82,6 +82,12 @@ public class Invasion : MonoBehaviour
     private void VirusDeath()
     {
         this.totalKO++;
+
+        // Asegurarte de que ScoreManager existe antes de llamarlo
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddScore(10); // Sumar 10 puntos por cada enemigo destruido
+        }
     }
 }
 

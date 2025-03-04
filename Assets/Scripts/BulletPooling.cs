@@ -55,6 +55,7 @@ public class BulletPooling : MonoBehaviour
         }
 
         bulletSelected = UseBullet();
+
         if (bulletSelected == null)
         {
             Debug.LogError("ERROR: No se pudo seleccionar una bala.");
@@ -67,15 +68,26 @@ public class BulletPooling : MonoBehaviour
 
     private GameObject UseBullet()
     {
-        foreach (GameObject bullet in bulletsCharged)
+        for (int i = 0; i < bulletsCharged.Count; i++)
         {
-            if (!bullet.activeInHierarchy)
+            if (bulletsCharged[i] == null)
             {
-                return bullet;
+                // Si una bala fue destruida accidentalmente, la reemplazamos
+                bulletsCharged[i] = Instantiate(bulletPrefab);
+                bulletsCharged[i].SetActive(false);
+            }
+
+            if (!bulletsCharged[i].activeInHierarchy)
+            {
+                return bulletsCharged[i];
             }
         }
 
-        MakePool(1);
-        return bulletsCharged[bulletsCharged.Count - 1];
+        // Si no hay balas disponibles, creamos una nueva
+        GameObject newBullet = Instantiate(bulletPrefab);
+        newBullet.SetActive(false);
+        bulletsCharged.Add(newBullet);
+
+        return newBullet;
     }
 }

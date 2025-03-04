@@ -33,10 +33,19 @@ public class Virus : MonoBehaviour
         spriteRenderer.sprite = this.animationSprites[animationFrame];
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.layer== LayerMask.NameToLayer("Buller")){
-            this.death.Invoke();
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bullet")) // Asegurar que el nombre de la capa es correcto
+        {
+            // Evitar error si death es null
+            if (this.death != null)
+            {
+                this.death.Invoke();
+            }
+
+            // Desactivar el enemigo y la bala
             this.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
     }
 }

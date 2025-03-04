@@ -23,15 +23,15 @@ public class BulletController : MonoBehaviour
         bulletRb.velocity = Vector2.zero; // Resetear velocidad
         bulletRb.angularVelocity = 0f;    // Evitar rotaciones inesperadas
 
-        // Aplicar la fuerza en la dirección de la bala
-        bulletRb.AddForce(transform.up * bulletSpeed);
+        // Aplicar la fuerza en la dirección correcta
+        bulletRb.AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
 
-        // Destruir después de un tiempo
-        Invoke("DisableBullet", lifetime);
+        StartCoroutine(DisableAfterTime(lifetime)); // Usar una corrutina en vez de Invoke
     }
 
-    void DisableBullet()
+    IEnumerator DisableAfterTime(float time)
     {
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(time);
+        gameObject.SetActive(false); // Desactivar la bala correctamente
     }
 }
