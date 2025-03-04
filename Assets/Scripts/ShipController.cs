@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
     public BulletPooling bulletPool;
+    
 
     void Start()
     {
@@ -13,22 +14,23 @@ public class ShipController : MonoBehaviour
             bulletPool = FindObjectOfType<BulletPooling>();
             if (bulletPool == null)
             {
-                Debug.LogError("ERROR: No se encontró ningún objeto con BulletPooling en la escena.");
+                Debug.LogError("ERROR: No se encontrï¿½ ningï¿½n objeto con BulletPooling en la escena.");
             }
         }
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // "Fire1" es el botón universal para disparar
+        if (Input.GetButtonDown("Fire1")) // "Fire1" es el botï¿½n universal para disparar
         {
             if (bulletPool != null)
             {
                 bulletPool.FireBullets();
+                
             }
             else
             {
-                Debug.LogError("ERROR: bulletPool no está asignado en ShipController.");
+                Debug.LogError("ERROR: bulletPool no estï¿½ asignado en ShipController.");
             }
         }
     }
