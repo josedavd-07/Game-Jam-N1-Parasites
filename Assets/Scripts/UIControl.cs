@@ -73,4 +73,6 @@ public class UIControl : MonoBehaviour
     {
         GameManager.GameInstance.SetDifficulty((DifficultyLevel)difficulty);
     }
+
+    
 }
