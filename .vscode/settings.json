@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Game-Jam-N1-Parasites.sln"
+    "dotnet.defaultSolution": "Game-Jam-N1-Parasites 2.sln"
 }
