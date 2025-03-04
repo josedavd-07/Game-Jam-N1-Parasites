@@ -8,8 +8,16 @@ public class BulletController : MonoBehaviour
     public float bulletSpeed = 500f; // Ajustar según necesidad
     public float lifetime = 3f;
 
+    private bool firstEnable = true;
+
     void OnEnable()
     {
+        if (firstEnable)
+        {
+            firstEnable = false;
+            return;
+        }
+
         if (bulletRb == null)
         {
             bulletRb = GetComponent<Rigidbody2D>();
@@ -22,6 +30,8 @@ public class BulletController : MonoBehaviour
 
         bulletRb.velocity = Vector2.zero; // Resetear velocidad
         bulletRb.angularVelocity = 0f;    // Evitar rotaciones inesperadas
+
+        AudioManager.Instance.PlaySFX("PlayerShoot");
 
         // Aplicar la fuerza en la dirección correcta
         bulletRb.AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
