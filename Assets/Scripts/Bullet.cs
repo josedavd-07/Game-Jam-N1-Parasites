@@ -8,18 +8,6 @@ public class Bullet : MonoBehaviour
     public float speed;
     public System.Action destroyed;
 
-    private void Start()
-    {
-        // Asegurar que la bala tiene un Rigidbody2D
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            rb = gameObject.AddComponent<Rigidbody2D>();
-        }
-        rb.gravityScale = 0; // Evita que la bala caiga por gravedad
-        rb.velocity = direction * speed;
-    }
-
     private void Update()
     {
         this.transform.position += this.direction * this.speed * Time.deltaTime;
@@ -29,7 +17,7 @@ public class Bullet : MonoBehaviour
     {
         Debug.Log($"Bala impactó con: {other.gameObject.name}");
 
-        if (other.CompareTag("Player")) // Verifica que el objeto impactado es el jugador
+        if (other.CompareTag("Player"))
         {
             Debug.Log("¡Jugador impactado!");
 
@@ -37,7 +25,7 @@ public class Bullet : MonoBehaviour
             HealthManager healthManager = other.GetComponent<HealthManager>();
             if (healthManager != null)
             {
-                healthManager.Takedamage(true);
+                healthManager.Takedamage(true); // Restar una vida
                 Debug.Log("Vida restada.");
             }
             else
@@ -46,6 +34,15 @@ public class Bullet : MonoBehaviour
             }
 
             Destroy(gameObject); // Destruir la bala tras impactar
+        }
+    }
+
+
+    private void OnDestroy()
+    {
+        if (destroyed != null)
+        {
+            destroyed.Invoke();
         }
     }
 }

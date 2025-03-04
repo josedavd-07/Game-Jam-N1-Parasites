@@ -9,26 +9,27 @@ public class Invasion : MonoBehaviour
     public int columns = 9;
     public int totalKO { get; private set; }
     public float percentKO => (float)this.totalKO / ((float)this.rows * this.columns);
-    public int StillAlive => (int)(this.rows * this.columns)-this.totalKO;  
+    public int StillAlive => (int)(this.rows * this.columns) - this.totalKO;
     private float baseSpeed = 1.0f;
     private float speed;
-    private float maxSpeed = 15.0f; // Se aumentó el máximo para mayor desafío
+    private float maxSpeed = 15.0f;
     private int waveNumber = 1;
-    public int maxWaves = 5; // Número máximo de oleadas
-     //private float speedIncreaseFactor = 1.1f; // Factor de aumento de velocidad
-    private float dropDistance = 1.0f;     
+    public int maxWaves = 5;
+    private float speedIncreaseFactor = 1.1f;
+    private float dropDistance = 1.0f;
     private float minDropDistance = 0.3f;
     private Vector3 direction = Vector2.right;
-    private Vector3 initialPosition; // Guardamos la posición inicial
-    public float FrequencyAttack = 0.2f;
+    private Vector3 initialPosition;
+    public float FrequencyAttack = 0.5f; // Frecuencia de ataque reducida para más disparos
     public Bullet bullet;
-
-    
+    private float attackCooldown = 5.0f; // Empieza con disparos poco frecuentes
+    private float minAttackCooldown = 1.0f;
 
     private void Start()
     {
-        initialPosition = transform.position; // Guardar la posición original
+        initialPosition = transform.position;
         StartNewWave();
+        InvokeRepeating(nameof(EnemyAttack), 1.0f, FrequencyAttack); // Inicia los ataques
     }
 
     private void StartNewWave()
@@ -41,7 +42,15 @@ public class Invasion : MonoBehaviour
         }
 
         totalKO = 0;
-        speed = Mathf.Min(baseSpeed * Mathf.Pow(2, waveNumber - 1), maxSpeed); // Aumenta más la velocidad
+        speed = Mathf.Min(baseSpeed * Mathf.Pow(2, waveNumber - 1), maxSpeed);
+
+        // 🔹 Disminuir la frecuencia de ataque más rápido por cada ola
+        FrequencyAttack = Mathf.Max(FrequencyAttack - 0.7f, 0.7f); // Nunca menos de 0.2s
+
+        // 🔹 Reducir el cooldown de ataque en 0.5 por ola (puedes aumentarlo a 0.7 o 1.0 si quieres más agresividad)
+        attackCooldown = Mathf.Max(5.0f - (waveNumber * 1f), minAttackCooldown); // Nunca menor a 1.0s
+
+        Debug.Log($"Ola {waveNumber} - Nueva frecuencia de ataque: {FrequencyAttack}, Cooldown: {attackCooldown}");
 
         // Reiniciar la posición del grupo de enemigos
         transform.position = initialPosition;
@@ -52,7 +61,12 @@ public class Invasion : MonoBehaviour
         }
 
         SpawnEnemies();
+
+        // 🔹 Reiniciar los ataques con la nueva frecuencia
+        CancelInvoke(nameof(EnemyAttack));
+        InvokeRepeating(nameof(EnemyAttack), attackCooldown, FrequencyAttack);
     }
+
 
     private void SpawnEnemies()
     {
@@ -122,14 +136,20 @@ public class Invasion : MonoBehaviour
         {
             Debug.Log($"¡Oleada {waveNumber} completada!");
             waveNumber++;
-
             StartNewWave();
         }
     }
 
     private void EnemyAttack()
     {
-        Debug.Log("Intentando disparar...");
+        Debug.Log($"Intentando disparar... Enemigos vivos: {StillAlive}");
+
+        if (bullet == null)
+        {
+            Debug.LogError("Error: No se ha asignado un prefab de bullet en el Inspector.");
+            return;
+        }
+
         foreach (Transform virus in this.transform)
         {
             if (!virus.gameObject.activeInHierarchy)
@@ -137,13 +157,12 @@ public class Invasion : MonoBehaviour
                 continue;
             }
 
-            if (StillAlive > 0 && Random.value < (1.0f / (float)StillAlive))
+            if (StillAlive > 0 && Random.value < 0.2f) // 20% de probabilidad de ataque
             {
-              Instantiate(this.bullet, virus.position, Quaternion.identity);
-              break;
+                Instantiate(this.bullet, virus.position, Quaternion.identity);
+                Debug.Log($"Virus en {virus.position} ha disparado.");
+                break;
             }
-            
         }
     }
-    
 }
