@@ -46,6 +46,7 @@ public class Virus : MonoBehaviour
             {
                 deathVfx.transform.SetParent(null); // Separar el efecto del virus
                 deathVfx.Play();
+                AudioManager.Instance.PlaySFX("EnemyExplosion");
                 Destroy(deathVfx.gameObject, deathVfx.main.duration); // Destruir la partícula después de su duración
             }
 
