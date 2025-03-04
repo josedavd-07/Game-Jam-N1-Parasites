@@ -66,7 +66,7 @@ public class UIControl : MonoBehaviour
     public void ResumeGame()
     {
         GameManager.GameInstance.PauseGame();
-        PauseCanvas.SetActive(false);
+        
     }
 
     public void SetDifficulty(int difficulty)
