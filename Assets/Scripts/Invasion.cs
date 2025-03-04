@@ -15,7 +15,7 @@ public class Invasion : MonoBehaviour
     private float maxSpeed = 15.0f;
     private int waveNumber = 1;
     public int maxWaves = 5;
-    private float speedIncreaseFactor = 1.1f;
+    //private float speedIncreaseFactor = 1.1f;
     private float dropDistance = 1.0f;
     private float minDropDistance = 0.3f;
     private Vector3 direction = Vector2.right;

@@ -21,7 +21,7 @@ public class ShipController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // "Fire1" es el bot�n universal para disparar
+        if (Input.GetButtonDown("Fire1") && !GameManager.GameInstance.isPaused) // "Fire1" es el bot�n universal para disparar
         {
             if (bulletPool != null)
             {
