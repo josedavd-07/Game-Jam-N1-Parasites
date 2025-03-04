@@ -9,29 +9,61 @@ public class Invasion : MonoBehaviour
     public int columns = 9;
     public int totalKO { get; private set; }
     public float percentKO => (float)this.totalKO / ((float)this.rows * this.columns);
-    
-    private float speed = 1.0f; // Velocidad inicial reducida para un inicio más balanceado
-    private float maxSpeed = 8.0f; // Velocidad máxima que puede alcanzar
-    private float speedIncreaseFactor = 1.1f; // Factor de aumento de velocidad
 
-    private float dropDistance = 1.0f; // Distancia inicial de bajada
-    private float minDropDistance = 0.3f; // Distancia mínima de bajada (para evitar descensos bruscos)
+    private float baseSpeed = 1.0f;
+    private float speed;
+    private float maxSpeed = 15.0f; // Se aumentó el máximo para mayor desafío
+    private int waveNumber = 1;
+    public int maxWaves = 5; // Número máximo de oleadas
+
+    private float dropDistance = 1.0f;
+    private float minDropDistance = 0.3f;
 
     private Vector3 direction = Vector2.right;
+    private Vector3 initialPosition; // Guardamos la posición inicial
 
-    private void Awake()
+    private void Start()
     {
-        for (int row = 0; row < this.rows; row++)
+        initialPosition = transform.position; // Guardar la posición original
+        StartNewWave();
+    }
+
+    private void StartNewWave()
+    {
+        if (waveNumber > maxWaves)
         {
-            float width = 5f * (this.columns - 1);
-            float height = 5f * (this.rows - 1);
+            Debug.Log("¡Has completado todas las oleadas! Fin del juego.");
+            GameManager.GameInstance.GameOverWin();
+            return;
+        }
+
+        totalKO = 0;
+        speed = Mathf.Min(baseSpeed * Mathf.Pow(2, waveNumber - 1), maxSpeed); // Aumenta más la velocidad
+
+        // Reiniciar la posición del grupo de enemigos
+        transform.position = initialPosition;
+
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        SpawnEnemies();
+    }
+
+    private void SpawnEnemies()
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            float width = 5f * (columns - 1);
+            float height = 5f * (rows - 1);
             Vector2 centering = new Vector2(-width / 2, -height / 2);
             Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 5f), 0.0f);
 
-            for (int col = 0; col < this.columns; col++)
+            for (int col = 0; col < columns; col++)
             {
-                Virus virus = Instantiate(this.prefabs[row % this.prefabs.Length], this.transform);
-                virus.death += VirusDeath; // Corregido: ahora usa una instancia
+                Virus virus = Instantiate(prefabs[row % prefabs.Length], transform);
+                virus.death += VirusDeath;
                 Vector3 position = rowPosition;
                 position.x += col * 5f;
                 virus.transform.localPosition = position;
@@ -41,12 +73,12 @@ public class Invasion : MonoBehaviour
 
     private void Update()
     {
-        this.transform.position += direction * this.speed * Time.deltaTime;
+        transform.position += direction * speed * Time.deltaTime;
 
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
 
-        foreach (Transform virus in this.transform)
+        foreach (Transform virus in transform)
         {
             if (!virus.gameObject.activeInHierarchy)
             {
@@ -69,35 +101,26 @@ public class Invasion : MonoBehaviour
     private void RowDown()
     {
         direction.x *= -1.0f;
-        Vector3 position = this.transform.position;
-        
-        // Asegurar que la bajada no sea menor que el mínimo
+        Vector3 position = transform.position;
         position.y -= Mathf.Max(dropDistance, minDropDistance);
-        this.transform.position = position;
-
-        // Aumentar la velocidad progresivamente hasta un máximo
-        speed = Mathf.Min(speed * speedIncreaseFactor, maxSpeed);
+        transform.position = position;
     }
 
     private void VirusDeath()
     {
-        this.totalKO++;
+        totalKO++;
 
-        // Asegurarte de que ScoreManager existe antes de llamarlo
         if (ScoreManager.Instance != null)
         {
-            ScoreManager.Instance.AddScore(10); // Sumar 10 puntos por cada enemigo destruido
-        }
-        if (totalKO >= (rows * columns)) // Si todos los virus han sido eliminados
-        {
-            Debug.Log("¡Victoria! Todos los virus han sido eliminados.");
-            GameManager.GameInstance.GameOverWin();
+            ScoreManager.Instance.AddScore(10);
         }
 
+        if (totalKO >= (rows * columns))
+        {
+            Debug.Log($"¡Oleada {waveNumber} completada!");
+            waveNumber++;
+
+            StartNewWave();
+        }
     }
 }
-
-
-
-
-
