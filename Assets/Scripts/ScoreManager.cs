@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance { get; private set; }
     public int score;
     public TextMeshProUGUI scoreText;
-    // Start is called before the first frame update
+   
 
     private void Awake()
     {
@@ -21,10 +21,31 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Asegurar que haya solo una instancia
+            Destroy(gameObject); 
         }
     }
 
+    private void Start()
+    {
+        GameManager.GameInstance.OnWin += HandleGameWin;
+        GameManager.GameInstance.OnLose += HandleGameOver;
+    }
+
+    private void HandleGameWin()
+    {
+        gameObject.SetActive(false); 
+    }
+
+    private void HandleGameOver()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.GameInstance.OnWin -= HandleGameWin;
+        GameManager.GameInstance.OnLose -= HandleGameOver;
+    }
 
     public void AddScore(int amount)
     {
