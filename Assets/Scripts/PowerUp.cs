@@ -9,10 +9,16 @@ public class PowerUp : MonoBehaviour
 
     public void SpawnPowerUp()
     {
+        Debug.Log("Intentando generar un Power-Up...");
+    
         if (prefabPowerUp != null && spawnPoint != null)
         {
             Instantiate(prefabPowerUp, spawnPoint.position, Quaternion.identity);
-            Debug.Log("Power-up generado.");
+            Debug.Log("Power-Up generado exitosamente en " + spawnPoint.position);
+        }
+        else
+        {
+            Debug.LogWarning("Error: prefabPowerUp o spawnPoint no están asignados en el Inspector.");
         }
     }
 }

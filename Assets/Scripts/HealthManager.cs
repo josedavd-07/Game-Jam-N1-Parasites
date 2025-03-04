@@ -19,7 +19,7 @@ public class HealthManager : MonoBehaviour
         updateLifes();
     }
 
-    
+
     //public void Takedamage(bool cur)
     //{
     //    currentLives--;
@@ -27,7 +27,7 @@ public class HealthManager : MonoBehaviour
     //    if (currentLives == 0)
     //    {
     //        GameManager.GameInstance.GameOverLose();
-            
+
 
     //    }
     //}
@@ -37,12 +37,18 @@ public class HealthManager : MonoBehaviour
     {
         currentLives--;
         updateLifes();
+        Debug.Log("Vida perdida. Vidas restantes: " + currentLives);
 
         if (currentLives > 0) // Generar power-up solo si quedan vidas
         {
             if (powerUpManager != null)
             {
+                Debug.Log("Llamando a SpawnPowerUp()...");
                 powerUpManager.SpawnPowerUp();
+            }
+            else
+            {
+                Debug.LogWarning("Error: powerUpManager no está asignado en HealthManager.");
             }
         }
 
@@ -51,6 +57,7 @@ public class HealthManager : MonoBehaviour
             GameManager.GameInstance.GameOverLose();
         }
     }
+
 
 
     void updateLifes()
