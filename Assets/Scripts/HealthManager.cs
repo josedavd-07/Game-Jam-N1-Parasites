@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
+    //Cambios hecho por jose
+    public PowerUp powerUpManager; // Referencia al PowerUp
 
     int maxLives = 3;
     int currentLives;
@@ -17,19 +19,46 @@ public class HealthManager : MonoBehaviour
         updateLifes();
     }
 
-    
+
+    //public void Takedamage(bool cur)
+    //{
+    //    currentLives--;
+    //    updateLifes() ;
+    //    if (currentLives == 0)
+    //    {
+    //        GameManager.GameInstance.GameOverLose();
+
+
+    //    }
+    //}
+
+
     public void Takedamage(bool cur)
     {
         currentLives--;
-        updateLifes() ;
+        updateLifes();
+        Debug.Log("Vida perdida. Vidas restantes: " + currentLives);
+
+        if (currentLives > 0) // Generar power-up solo si quedan vidas
+        {
+            if (powerUpManager != null)
+            {
+                Debug.Log("Llamando a SpawnPowerUp()...");
+                powerUpManager.SpawnPowerUp();
+            }
+            else
+            {
+                Debug.LogWarning("Error: powerUpManager no está asignado en HealthManager.");
+            }
+        }
+
         if (currentLives == 0)
         {
             GameManager.GameInstance.GameOverLose();
-            AudioManager.Instance.PlaySFX("PlayerExplosion");
-            AudioManager.Instance.PlayMusic("DeadTheme");
-    
         }
     }
+
+
 
     void updateLifes()
     {
