@@ -1777,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSize: 20
-  bulletPrefab: {fileID: 7622820829578001174, guid: 8cc27bbee02d6cf4a95ec4a2b7943929, type: 3}
+  bulletPrefab: {fileID: 2632600471170716052, guid: 2831d8b45d62d364496bb292001e72cf, type: 3}
   shootPoint: {fileID: 743467182}
 --- !u!4 &1859572424
 Transform:
