@@ -26,4 +26,14 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
     }
+
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+         HealthManager health = other.gameObject.GetComponent<HealthManager>();
+        if (other.gameObject.layer == LayerMask.NameToLayer("Gun")||other.gameObject.layer == LayerMask.NameToLayer("Virus") ) 
+        {
+            health.Takedamage(true);
+            
+        }
+    }
 }
