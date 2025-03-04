@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
+    //Cambios hecho por jose
+    public PowerUp powerUpManager; // Referencia al PowerUp
 
     int maxLives = 3;
     int currentLives;
@@ -18,17 +20,38 @@ public class HealthManager : MonoBehaviour
     }
 
     
+    //public void Takedamage(bool cur)
+    //{
+    //    currentLives--;
+    //    updateLifes() ;
+    //    if (currentLives == 0)
+    //    {
+    //        GameManager.GameInstance.GameOverLose();
+            
+
+    //    }
+    //}
+
+
     public void Takedamage(bool cur)
     {
         currentLives--;
-        updateLifes() ;
+        updateLifes();
+
+        if (currentLives > 0) // Generar power-up solo si quedan vidas
+        {
+            if (powerUpManager != null)
+            {
+                powerUpManager.SpawnPowerUp();
+            }
+        }
+
         if (currentLives == 0)
         {
             GameManager.GameInstance.GameOverLose();
-            
-
         }
     }
+
 
     void updateLifes()
     {
