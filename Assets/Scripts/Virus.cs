@@ -6,7 +6,7 @@ public class Virus : MonoBehaviour
 {
     public Sprite[] animationSprites;
     public float animationTime = 1.0f;
-
+    public ParticleSystem deathVfx;
     private SpriteRenderer spriteRenderer;
     private int animationFrame;
     public System.Action death;
@@ -42,7 +42,7 @@ public class Virus : MonoBehaviour
             {
                 this.death.Invoke();
             }
-
+            deathVfx.Play();
             // Desactivar el enemigo y la bala
             this.gameObject.SetActive(false);
             other.gameObject.SetActive(false);

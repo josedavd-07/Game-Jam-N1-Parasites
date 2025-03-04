@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3181162749294870707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2853677247260573817}
+    m_Modifications:
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464950693656172981, guid: 83ad694f134ab954580473212156b35a, type: 3}
+      propertyPath: m_Name
+      value: vfx_Explosion_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83ad694f134ab954580473212156b35a, type: 3}
+--- !u!198 &857989855532783966 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2868216338370173421, guid: 83ad694f134ab954580473212156b35a, type: 3}
+  m_PrefabInstance: {fileID: 3181162749294870707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7816860359624375516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4638377481891691631, guid: 83ad694f134ab954580473212156b35a, type: 3}
+  m_PrefabInstance: {fileID: 3181162749294870707}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4838047778019142839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,12 +189,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7259378756608208078, guid: 5e314a5e3bc09234399422a772ec8f0d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7816860359624375516}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9042307568839271006, guid: 5e314a5e3bc09234399422a772ec8f0d, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1789709854136622964}
   m_SourcePrefab: {fileID: 100100000, guid: 5e314a5e3bc09234399422a772ec8f0d, type: 3}
+--- !u!4 &2853677247260573817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7259378756608208078, guid: 5e314a5e3bc09234399422a772ec8f0d, type: 3}
+  m_PrefabInstance: {fileID: 4838047778019142839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4492490168079437545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9042307568839271006, guid: 5e314a5e3bc09234399422a772ec8f0d, type: 3}
@@ -150,3 +225,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 369dbfe3e5502ca4f8aabfef2bb34f74, type: 3}
   - {fileID: 21300000, guid: 38fce5fda7c03ed46b8f8e8c264be88a, type: 3}
   animationTime: 1
+  deathVfx: {fileID: 857989855532783966}

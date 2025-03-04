@@ -88,6 +88,12 @@ public class Invasion : MonoBehaviour
         {
             ScoreManager.Instance.AddScore(10); // Sumar 10 puntos por cada enemigo destruido
         }
+        if (totalKO >= (rows * columns)) // Si todos los virus han sido eliminados
+        {
+            Debug.Log("¡Victoria! Todos los virus han sido eliminados.");
+            GameManager.GameInstance.GameOverWin();
+        }
+
     }
 }
 
