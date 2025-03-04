@@ -67,7 +67,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         isPaused = false;
+
+        AudioManager.Instance.musicSource.Stop();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        AudioManager.Instance.PlayMusic("Theme");
     }
 
     public void SetDifficulty(DifficultyLevel newDifficulty)
