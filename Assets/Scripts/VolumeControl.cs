@@ -43,4 +43,14 @@ public class VolumeSettings : MonoBehaviour
         SetMusicVolume();
         SetSfxVolume();
     }
+
+    public void MuteToggle(bool isMuted)
+    {
+        AudioSource[] sources = FindObjectsOfType<AudioSource>();
+
+        for (int i = 0; i < sources.Length; i++)
+        {
+            sources[i].mute = isMuted;
+        }
+    }
 }
