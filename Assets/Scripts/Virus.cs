@@ -37,15 +37,20 @@ public class Virus : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Bullet")) // Asegurar que el nombre de la capa es correcto
         {
-            // Evitar error si death es null
             if (this.death != null)
             {
                 this.death.Invoke();
             }
-            deathVfx.Play();
-            // Desactivar el enemigo y la bala
-            this.gameObject.SetActive(false);
-            other.gameObject.SetActive(false);
+
+            if (deathVfx != null)
+            {
+                deathVfx.transform.SetParent(null); // Separar el efecto del virus
+                deathVfx.Play();
+                Destroy(deathVfx.gameObject, deathVfx.main.duration); // Destruir la partícula después de su duración
+            }
+
+            this.gameObject.SetActive(false); // Desactivar el enemigo
+            other.gameObject.SetActive(false); // Desactivar la bala
         }
     }
 }
