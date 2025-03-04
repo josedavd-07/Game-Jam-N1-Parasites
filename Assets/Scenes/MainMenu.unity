@@ -805,7 +805,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1195159484}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
         m_MethodName: MuteToggle
         m_Mode: 0
@@ -2146,6 +2146,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1313775018468041375, guid: 6aa9426ece2a42b4a81567fd223e9950, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 1e172e85cb76a6b4b8f3825c248e238e, type: 2}
     - target: {fileID: 1823880351365187832, guid: 6aa9426ece2a42b4a81567fd223e9950, type: 3}
       propertyPath: m_Name
       value: AudioManager

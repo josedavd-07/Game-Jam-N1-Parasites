@@ -10,15 +10,14 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("musicVolume"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetSfxVolume();
-        }
+        LoadVolume(); // Cargar los valores guardados al iniciar
+
+        // Asegurar que los sliders reflejen los valores actuales
+        if (musicSlider != null)
+            musicSlider.onValueChanged.AddListener(delegate { SetMusicVolume(); });
+
+        if (sfxSlider != null)
+            sfxSlider.onValueChanged.AddListener(delegate { SetSfxVolume(); });
     }
 
     public void SetMusicVolume()
@@ -26,6 +25,12 @@ public class VolumeSettings : MonoBehaviour
         float volume = musicSlider.value;
         audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
+        PlayerPrefs.Save();
+    
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ApplySavedVolumes();
+        }
     }
 
     public void SetSfxVolume()
@@ -33,15 +38,29 @@ public class VolumeSettings : MonoBehaviour
         float volume = sfxSlider.value;
         audioMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
+        PlayerPrefs.Save();
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ApplySavedVolumes();
+        }
     }
 
     private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            float musicVolume = PlayerPrefs.GetFloat("musicVolume");
+            musicSlider.value = musicVolume;
+            audioMixer.SetFloat("music", Mathf.Log10(musicVolume) * 20);
+        }
 
-        SetMusicVolume();
-        SetSfxVolume();
+        if (PlayerPrefs.HasKey("sfxVolume"))
+        {
+            float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+            sfxSlider.value = sfxVolume;
+            audioMixer.SetFloat("sfx", Mathf.Log10(sfxVolume) * 20);
+        }
     }
 
     public void MuteToggle(bool isMuted)
