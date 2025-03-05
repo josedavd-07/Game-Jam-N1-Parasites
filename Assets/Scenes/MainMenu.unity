@@ -2150,6 +2150,18 @@ PrefabInstance:
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: 1e172e85cb76a6b4b8f3825c248e238e, type: 2}
+    - target: {fileID: 1313775018468041375, guid: 6aa9426ece2a42b4a81567fd223e9950, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313775018468041375, guid: 6aa9426ece2a42b4a81567fd223e9950, type: 3}
+      propertyPath: sfxSounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b8298c61bd4dce49ac5ca17455274f2, type: 3}
+    - target: {fileID: 1313775018468041375, guid: 6aa9426ece2a42b4a81567fd223e9950, type: 3}
+      propertyPath: sfxSounds.Array.data[4].name
+      value: MonsterShoot
+      objectReference: {fileID: 0}
     - target: {fileID: 1823880351365187832, guid: 6aa9426ece2a42b4a81567fd223e9950, type: 3}
       propertyPath: m_Name
       value: AudioManager

@@ -160,6 +160,7 @@ public class Invasion : MonoBehaviour
             if (StillAlive > 0 && Random.value < 0.2f) // 20% de probabilidad de ataque
             {
                 Instantiate(this.bullet, virus.position, Quaternion.identity);
+                AudioManager.Instance.PlaySFX("MonsterShoot");
                 Debug.Log($"Virus en {virus.position} ha disparado.");
                 break;
             }
