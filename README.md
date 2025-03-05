@@ -59,11 +59,12 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 |------------|------------|------------|
 | [![Pausa](Assets/Images/PantallaPause.jpg)](Assets/Images/PantallaPause.jpg) | [![Jugador](Assets/Images/Player.jpg)](Assets/Images/Player.jpg) | [![Tutorial](Assets/Images/TutorialGame.png)](Assets/Images/TutorialGame.png) |
 
-| 🎬 Portada |
-|------------|
-| [![Portada](Assets/Images/PortadaGame.jpg)](Assets/Images/PortadaGame.jpg) |
+| 🎬 Portada | 🎭 Créditos |
+|------------|------------|
+| [![Portada](Assets/Images/PortadaGame.jpg)](Assets/Images/PortadaGame.jpg) | [![Créditos](Assets/Images/Creditos.jpg)](Assets/Images/Creditos.jpg) |
 
 ---
+
 
 
 
@@ -73,6 +74,15 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 
 
 
+
+---
+
+
+## 🎮 JUGAR EN ITCH.IO
+
+<a href="https://josedavdmast3r.itch.io/parasite-invasion">
+  <img src="Assets/Images/ItchioBlanco.png" alt="Jugar en Itch.io" width="150">
+</a>
 
 ---
 
