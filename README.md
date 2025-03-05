@@ -116,8 +116,13 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 
 ## 👥 CRÉDITOS
 
-- 👨‍💻 **Jose Carranza** / Programmer
-- 👨‍💻 **David Ospina** / Programmer
-- 👨‍💻 **Carlos Botina** / Programmer
-- 👨‍💻 **Andres Muñoz** / Programmer
+👨‍💻 José Carranza / Mechanics Programmer
+
+👨‍💻 David Ospina /Audio Programer
+
+👨‍💻 Carlos Botina /Enemy Behavior Programmer
+
+👨‍💻 Andrés Muñoz / UI/UX Design / Programmer
+
+
 
