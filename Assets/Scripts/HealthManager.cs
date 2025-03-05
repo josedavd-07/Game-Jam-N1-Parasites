@@ -27,8 +27,8 @@ public class HealthManager : MonoBehaviour
         if (currentLives == 0)
         {
             GameManager.GameInstance.GameOverLose();
-
-
+            AudioManager.Instance.PlaySFX("PlayerExplosion");
+            AudioManager.Instance.PlayMusic("DeadTheme");
         }
     }
 
