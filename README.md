@@ -85,11 +85,16 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 </a>
 
 ---
-
 ## 🎨 ASSETS
 
 - 🛸 **“Free Stylized 2D Space Shooter Pack”** by Larzes  
   🛋️ Unity Asset Store: [🔗 Enlace]()
+
+- 🌌 **Alien Floor by Langvv**  
+  📦 Unity Asset Store: [🔗 Enlace](https://assetstore.unity.com/packages/2d/textures-materials/alien-floor-6023)
+
+- 🔥 **Free Quick Effects Vol. 1 by Gabriel Aguiar Prod**  
+  📦 Unity Asset Store: [🔗 Enlace](https://assetstore.unity.com/packages/vfx/particles/free-quick-effects-vol-1-304424)
 
 ---
 
@@ -104,6 +109,8 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 - 🔊 **Enemy Explosion Sound** [🔗 Enlace]()
 - 🎶 **Soundtrack** [🔗 Enlace]()
 - 🔊 **Button Sound** [🔗 Enlace]()
+
+
 
 ---
 
