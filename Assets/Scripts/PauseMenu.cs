@@ -50,4 +50,9 @@ public class PauseMenu : MonoBehaviour
             sources[i].mute = isMuted;
         }
     }
+
+    public void ButtonSFX()
+    {
+        AudioManager.Instance.PlaySFX("Button");
+    }
 }
