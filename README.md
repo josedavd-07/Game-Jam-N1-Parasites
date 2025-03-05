@@ -86,7 +86,7 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 ---
 
 ## 📄 GAME DESIGN DOCUMENT
-[GDD](https://drive.google.com/file/d/1tnLWyNujWCCVMJ6J3skUq2s8MWdFp9aL/view)
+[GDD](https://drive.google.com/file/d/1_lPIJgoPA0VRhZDt6Mm8xm-PuQ_Ec690/view)
 
 ---
 ## 🎨 ASSETS
