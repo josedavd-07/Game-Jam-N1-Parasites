@@ -66,12 +66,10 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 ---
 
 
-
-
-## 🎥 VIDEO DEL GAMEPLAY
-[![Video del Juego](Assets/Images/PortadaGamePlay.png)](https://youtu.be/6HRSl7Qfo3k)
-
-
+## 🎥 VIDEO DEL GAMEPLAY  
+<a href="https://youtu.be/6HRSl7Qfo3k" target="_blank">
+  <img src="Assets/Images/PortadaGamePlay.png" alt="Video del Juego">
+</a>
 
 
 
@@ -83,6 +81,11 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 <a href="https://josedavdmast3r.itch.io/parasite-invasion">
   <img src="Assets/Images/ItchioBlanco.png" alt="Jugar en Itch.io" width="150">
 </a>
+
+---
+
+## 📄 GAME DESIGN DOCUMENT
+[GDD](https://drive.google.com/file/d/1tnLWyNujWCCVMJ6J3skUq2s8MWdFp9aL/view)
 
 ---
 ## 🎨 ASSETS
