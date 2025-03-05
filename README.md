@@ -66,12 +66,10 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 ---
 
 
-
-
-## 🎥 VIDEO DEL GAMEPLAY
-[![Video del Juego](Assets/Images/PortadaGamePlay.png)](https://youtu.be/6HRSl7Qfo3k)
-
-
+## 🎥 VIDEO DEL GAMEPLAY  
+<a href="https://youtu.be/6HRSl7Qfo3k" target="_blank">
+  <img src="Assets/Images/PortadaGamePlay.png" alt="Video del Juego">
+</a>
 
 
 
