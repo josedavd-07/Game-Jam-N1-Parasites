@@ -60,9 +60,14 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 |------------|------------|------------|
 | [![Pausa](Assets/Images/PantallaPause.jpg)](Assets/Images/PantallaPause.jpg) | [![Jugador](Assets/Images/Player.jpg)](Assets/Images/Player.jpg) | [![Tutorial](Assets/Images/TutorialGame.png)](Assets/Images/TutorialGame.png) |
 
+| 💀 Game Over | 🏆 Win |
+|------------|------------|
+| [![Game Over](Assets/Images/GameOver.jpg)](Assets/Images/GameOver.jpg) | [![Win](Assets/Images/Win.jpg)](Assets/Images/Win.jpg) |
+
 | 🎬 Portada | 🎭 Créditos |
 |------------|------------|
 | [![Portada](Assets/Images/PortadaGame.jpg)](Assets/Images/PortadaGame.jpg) | [![Créditos](Assets/Images/Creditos.jpg)](Assets/Images/Creditos.jpg) |
+
 
 ---
 
