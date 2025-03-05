@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("¡Jugador impactado!");
+            AudioManager.Instance.PlaySFX("PlayerDamaged");
 
             // Buscar el componente HealthManager
             HealthManager healthManager = other.GetComponent<HealthManager>();

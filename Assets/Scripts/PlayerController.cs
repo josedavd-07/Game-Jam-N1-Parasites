@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Gun")||other.gameObject.layer == LayerMask.NameToLayer("Virus") ) 
         {
             health.Takedamage(true);
-            
         }
     }
 }
