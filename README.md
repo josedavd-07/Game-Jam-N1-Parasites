@@ -83,6 +83,11 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 </a>
 
 ---
+
+## 📄 GAME DESIGN DOCUMENT
+[GDD](https://drive.google.com/file/d/1tnLWyNujWCCVMJ6J3skUq2s8MWdFp9aL/view)
+
+---
 ## 🎨 ASSETS
 
 - 🛸 **“Free Stylized 2D Space Shooter Pack”** by Larzes  
