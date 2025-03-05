@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
-    public float speed = 10.0f;
+    private float speed = 13.0f;
     private float xRange = 20.0f;
     // Start is called before the first frame update
 
