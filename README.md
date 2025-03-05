@@ -43,6 +43,7 @@ Cada uno de estos enemigos tiene patrones de ataque distintos, lo que hace que l
 
 - ▶️ **Movimiento**: Usa `A` y `D` para moverte de izquierda a derecha.
 - 🎯 **Disparo**: Haz clic derecho o usa el botón de disparo en los controles adicionales.
+- ▶️ **Menu Pausa**: Usa `p` para  pausar el juego y abrir el menu de opciones.
 
 🔥 **¡MUÉVETE Y SOBREVIVE A LA INVASIÓN PARASITARIA!** 🔥
 
