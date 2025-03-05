@@ -63,5 +63,16 @@ public class Virus : MonoBehaviour
             this.gameObject.SetActive(false); // Desactivar el enemigo
             other.gameObject.SetActive(false); // Desactivar la bala
         }
+
+        if(other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            Debug.Log("piso tocado");
+            GameManager.GameInstance.GameOverLose();
+        }
+        if (other.gameObject.CompareTag("Floor"))
+        {
+            Debug.Log("piso tocado");
+            GameManager.GameInstance.GameOverLose();
+        }
     }
 }
