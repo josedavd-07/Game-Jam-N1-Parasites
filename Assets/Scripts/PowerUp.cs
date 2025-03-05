@@ -21,4 +21,6 @@ public class PowerUp : MonoBehaviour
             Debug.LogWarning("Error: prefabPowerUp o spawnPoint no están asignados en el Inspector.");
         }
     }
+
+    
 }

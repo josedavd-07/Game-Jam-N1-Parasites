@@ -226,3 +226,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 38fce5fda7c03ed46b8f8e8c264be88a, type: 3}
   animationTime: 1
   deathVfx: {fileID: 857989855532783966}
+  powerUpPrefab: {fileID: 8585677292614833802, guid: 35847a4410d6fb342ac245e216cd40b9, type: 3}

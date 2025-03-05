@@ -221,6 +221,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 342c5819878691046a6a49fdf1bba778, type: 3}
   animationTime: 1
   deathVfx: {fileID: 1087321836180705016}
+  powerUpPrefab: {fileID: 8585677292614833802, guid: 35847a4410d6fb342ac245e216cd40b9, type: 3}
 --- !u!4 &6142108484767612632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7259378756608208078, guid: 5e314a5e3bc09234399422a772ec8f0d, type: 3}

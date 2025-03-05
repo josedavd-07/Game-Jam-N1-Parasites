@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,9 @@ public class Virus : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private int animationFrame;
     public System.Action death;
+
+    public GameObject powerUpPrefab; // 🔹 Prefab del Power-Up (se asigna en el Inspector)
+    private float dropChance = 0.2f; // 🔹 Probabilidad del 20% de soltar Power-Up
 
     private void Awake()
     {
@@ -42,12 +45,19 @@ public class Virus : MonoBehaviour
                 this.death.Invoke();
             }
 
+            // 🔹 Generar Power-Up con 20% de probabilidad
+            if (powerUpPrefab != null && Random.value < dropChance)
+            {
+                Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
+                Debug.Log("🔹 Power-Up generado en: " + transform.position);
+            }
+
             if (deathVfx != null)
             {
                 deathVfx.transform.SetParent(null); // Separar el efecto del virus
                 deathVfx.Play();
                 AudioManager.Instance.PlaySFX("EnemyExplosion");
-                Destroy(deathVfx.gameObject, deathVfx.main.duration); // Destruir la part�cula despu�s de su duraci�n
+                Destroy(deathVfx.gameObject, deathVfx.main.duration); // Destruir la partícula después de su duración
             }
 
             this.gameObject.SetActive(false); // Desactivar el enemigo
@@ -55,4 +65,3 @@ public class Virus : MonoBehaviour
         }
     }
 }
-
