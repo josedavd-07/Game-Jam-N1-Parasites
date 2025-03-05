@@ -20,6 +20,7 @@ public class powerupadd : MonoBehaviour
             if (healthManager != null)
             {
                 healthManager.AddLife(); // 🔹 Sumar vida al jugador
+                AudioManager.Instance.PlaySFX("Heal");
                 Debug.Log("🔹 Vida extra obtenida!");
                 Destroy(gameObject); // 🔹 Elimina el Power-Up tras recogerlo
             }
